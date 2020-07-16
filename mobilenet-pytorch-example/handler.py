@@ -59,22 +59,17 @@ def get_prediction(image_bytes):
 def classify_image(event, context):
     try:
         content_type_header = event['headers']['content-type']
-        print("classify Image try-------------------")
         body = base64.b64decode(event["body"])
 
         picture = decoder.MultipartDecoder(body, content_type_header).parts[0]
         
-        print("classify Image try 4-------------------")
         body = base64.b64decode(event["body"])
 
-        print("classify Image try 5-------------------")
         body = base64.b64decode(event["body"])
         prediction = get_prediction(image_bytes=picture.content)
         
-        print("classify Image try 2-------------------")
         filename = picture.headers[b'Content-Disposition'].decode().split(';')[1].split('=')[1]
 
-        print("classify Image try 3-------------------")
         if len(filename) < 4:
             filename = picture.headers[b'Content-Disposition'].decode().split(';')[2].split('=')[1]
 
