@@ -13,8 +13,9 @@ URL: [ https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify]( ht
 
 ### What exactly is Happening ?
 ![AWS](assets/aws.jpg)
+(Source TSAI)
 
-## Instructions and Notes
+## Instructions and Steps
 
 Install Node and NPM
 
@@ -89,5 +90,4 @@ npm run deploy
 URL: [ https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify]( https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify)
 
 Used Insomnia(https://insomnia.rest/download/) to query Endpoint as shown in Demo.
-
 
