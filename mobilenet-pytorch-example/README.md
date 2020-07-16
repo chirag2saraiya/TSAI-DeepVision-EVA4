@@ -8,6 +8,7 @@
 ### Screen shot
 ![demo](assets/demo.jpg)
 
+### Demo URL
 URL: [ https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify]( https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify)
 
 
@@ -30,35 +31,23 @@ Setup serverless
 
 ```bash
 sudo chown -R $USER:$(id -gn $USER) /home/shadowleaf/.config
-sls config credentials --provider aws --key AKIBWDBSFP1ACHJPAAGQ --secret PZWjxph8vFUkvLinL0frtBk1NijOKjI18DjFMEqm --overwrite
+sls config credentials --provider aws --key **** --secret **** --overwrite
 ```
 
 Use the template to create a new project
 
 ```bash
-sls create --template aws-python3 --name sls-flask-ml-test
+sls create --template aws-python3 --name mobilenet-pytorch-example
 ```
 
-```txt
-Serverless: Generating boilerplate...
- _______                             __
-|   _   .-----.----.--.--.-----.----|  .-----.-----.-----.
-|   |___|  -__|   _|  |  |  -__|   _|  |  -__|__ --|__ --|
-|____   |_____|__|  \___/|_____|__| |__|_____|_____|_____|
-|   |   |             The Serverless Application Framework
-|       |                           serverless.com, v1.74.1
- -------'
-
-Serverless: Successfully generated boilerplate for template: "aws-python3"
-```
 
 Install anaconda from https://docs.anaconda.com/anaconda/install/linux/
 
 Create a new environment in Anaconda
 
 ```bash
-conda create --name sls-flask
-conda activate sls-flask
+conda create --name pytorch-env
+conda activate pytorch-env
 ```
 
 ```bash
@@ -66,7 +55,7 @@ sls plugin install -n serverless-python-requirements
 sls plugin install -n serverless-wsgi
 ```
 
-Convert model to JIT
+Downloading Pretrained mobilenetv2 model
 
 ```python
 >>> import torch
@@ -90,7 +79,5 @@ Deploy to SLS using
 sls deploy
 ```
 
-> NOTE: If you get any kind of error which says .serverless/requirements not found, just rerun `sls deploy` 2-3 times, it'll fix itself
 
-## Some Gotchas
 
