@@ -3,10 +3,10 @@
 
 ## Demo
 ### Input Image
-![Input](assets/input.png)
+![Input](assets/input.jpg)
 
 ### Screen shot
-![demo](assets/demo.png)
+![demo](assets/demo.jpg)
 
 URL: [ https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify]( https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify)
 
