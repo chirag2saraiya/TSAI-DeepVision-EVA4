@@ -8,16 +8,19 @@
 ### Screen shot
 ![demo](assets/demo.jpg)
 
-### Demo URL
+### Endpoint URL
 URL: [ https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify]( https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify)
 
+### What exactly is Happening ?
+![AWS](assets/aws.jpg)
 
 ## Instructions and Notes
 
 Install Node and NPM
 
 ```bash
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
 sudo apt-get install -y nodejs
 ```
 
@@ -26,6 +29,13 @@ Install serverless
 ```bash
 sudo npm install -g serverless
 ```
+
+Configuring AWS
+1. Sign in to your AWS Console
+2. Create a new user for programmatic access. Select IAM (Identity and Access Management)
+3. For permissions,select AdministratorAccess 
+4. Notedown/Download key and secret 
+
 
 Setup serverless
 
@@ -52,7 +62,6 @@ conda activate pytorch-env
 
 ```bash
 sls plugin install -n serverless-python-requirements
-sls plugin install -n serverless-wsgi
 ```
 
 Downloading Pretrained mobilenetv2 model
@@ -64,20 +73,21 @@ Downloading Pretrained mobilenetv2 model
 >>> traced_model.save('mobilenetv2.pt')
 ```
 
-> IMPORTANT
-
-Make sure to add Binary Media Types in Amazon API Gateway Settings
+Add Binary Media Types in Amazon API Gateway Settings
 
 ```txt
 multipart/form-data
 */*
 ```
 
-Deploy to SLS using
+Deploy 
 
 ```bash
-sls deploy
+npm run deploy
 ```
+### Endpoint URL
+URL: [ https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify]( https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify)
 
+Used Insomnia(https://insomnia.rest/download/) to query Endpoint as shown in Demo.
 
 
