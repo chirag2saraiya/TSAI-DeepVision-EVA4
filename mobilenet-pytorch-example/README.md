@@ -1,14 +1,15 @@
 # Deploying to AWS
 
+
 ## Demo
+### Input Image
+![Input](assets/input.png)
 
-![demo](assets/2020-07-16%2013-13-13.gif)
+### Screen shot
+![demo](assets/demo.png)
 
-URL: [https://un64uvk2oi.execute-api.ap-south-1.amazonaws.com/dev/](https://un64uvk2oi.execute-api.ap-south-1.amazonaws.com/dev/)
+URL: [ https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify]( https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify)
 
-## CloudWatch Logs
-
-![logs](assets/logs.png)
 
 ## Instructions and Notes
 
