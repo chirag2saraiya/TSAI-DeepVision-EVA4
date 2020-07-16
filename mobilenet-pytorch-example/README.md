@@ -91,3 +91,5 @@ URL: [ https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify]( ht
 
 Used Insomnia(https://insomnia.rest/download/) to query Endpoint as shown in Demo.
 
+### References 
+TSAI and https://towardsdatascience.com/scaling-machine-learning-from-zero-to-hero-d63796442526
