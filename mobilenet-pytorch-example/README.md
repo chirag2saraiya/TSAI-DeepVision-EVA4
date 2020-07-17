@@ -69,6 +69,7 @@ conda activate pytorch-env
 >>> traced_model.save('mobilenetv2.pt')
 ```
 
+- Upload saved model to AWS S3 bucket
 
 - Use the template to create a new project
 
