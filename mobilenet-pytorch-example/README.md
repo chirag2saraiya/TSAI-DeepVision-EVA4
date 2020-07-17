@@ -8,7 +8,7 @@ Deploy pretrained [MobileNet-V2](https://pytorch.org/hub/pytorch_vision_mobilene
 ### Input Image
 ![Input](assets/input.jpg)
 
-### Screen shot
+### Test Screenshot
 ![demo](assets/demo.png)
 
 ### Endpoint URL
