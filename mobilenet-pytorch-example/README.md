@@ -1,6 +1,6 @@
 # Session1: Deploying to AWS
 
-## Assignment:  
+## Project Statement:  
 Deploy pretrained [MobileNet-V2](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/) model to AWS. Test deployment on [this](https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2019/12/03202400/Yellow-Labrador-Retriever.jpg) test image.
 
 
