@@ -10,7 +10,7 @@ This contains the solutions to the Projects given in The School of AI - Extensiv
 
 ---
 
-1. [Deploying over AWS: Train, Dockerize and then deploy deep learning model on AWS.]()
+1. [Deploying over AWS: Train, Dockerize and then deploy deep learning model on AWS.](https://chirag2saraiya.github.io/TSAI-DeepVision-EVA4/mobilenet-pytorch-example/)
 
     Project Describes basics of deploying any deeplearning model,on AWS.
 
