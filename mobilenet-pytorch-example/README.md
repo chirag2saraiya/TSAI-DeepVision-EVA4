@@ -1,4 +1,7 @@
-# Deploying to AWS
+# Session1: Deploying to AWS
+
+## Assignment:  
+Deploy pretrained [MobileNet-V2](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/) model to AWS. Test deployment on [this](https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2019/12/03202400/Yellow-Labrador-Retriever.jpg) test image.
 
 
 ## Demo
@@ -11,13 +14,17 @@
 ### Endpoint URL
 URL: [ https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify]( https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify)
 
+
+----------
+## Under The Hood
+
 ### What exactly is Happening ?
 ![AWS](assets/aws.jpg)
 (Source TSAI)
 
-## Instructions and Steps
+### Steps Followed
 
-Install Node and NPM
+- Install Node and NPM
 
 ```bash
 curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
@@ -25,47 +32,35 @@ sudo bash nodesource_setup.sh
 sudo apt-get install -y nodejs
 ```
 
-Install serverless
+- Install serverless
 
 ```bash
 sudo npm install -g serverless
 ```
 
-Configuring AWS
-1. Sign in to your AWS Console
-2. Create a new user for programmatic access. Select IAM (Identity and Access Management)
-3. For permissions,select AdministratorAccess 
-4. Notedown/Download key and secret 
+- Configure AWS  
+  1. Sign in to your AWS Console
+  2. Create a new user for programmatic access. Select IAM (Identity and Access Management)
+  3. For permissions,select AdministratorAccess 
+  4. Notedown/Download key and secret 
 
 
-Setup serverless
+- Setup serverless
 
 ```bash
-sudo chown -R $USER:$(id -gn $USER) /home/shadowleaf/.config
 sls config credentials --provider aws --key **** --secret **** --overwrite
 ```
 
-Use the template to create a new project
+- Install anaconda from https://docs.anaconda.com/anaconda/install/linux/
 
-```bash
-sls create --template aws-python3 --name mobilenet-pytorch-example
-```
-
-
-Install anaconda from https://docs.anaconda.com/anaconda/install/linux/
-
-Create a new environment in Anaconda
+- Create a new environment in Anaconda
 
 ```bash
 conda create --name pytorch-env
 conda activate pytorch-env
 ```
 
-```bash
-sls plugin install -n serverless-python-requirements
-```
-
-Downloading Pretrained mobilenetv2 model
+- Download Pretrained mobilenetv2 model
 
 ```python
 >>> import torch
@@ -74,18 +69,38 @@ Downloading Pretrained mobilenetv2 model
 >>> traced_model.save('mobilenetv2.pt')
 ```
 
-Add Binary Media Types in Amazon API Gateway Settings
+
+- Use the template to create a new project
+
+```bash
+sls create --template aws-python3 --name mobilenet-pytorch-example
+```
+
+- Install serverless plugin to created package
+
+```bash
+cd mobilenet-pytorch-example
+sls plugin install -n serverless-python-requirements
+```
+
+- Edit files ['handler.py'](https://github.com/chirag2saraiya/TSAI-DeepVision-EVA4/blob/master/mobilenet-pytorch-example/handler.py)',
+['serverless.yml'](https://github.com/chirag2saraiya/TSAI-DeepVision-EVA4/blob/master/mobilenet-pytorch-example/serverless.yml) and ['package.json'](https://github.com/chirag2saraiya/TSAI-DeepVision-EVA4/blob/master/mobilenet-pytorch-example/package.json)
+
+- Deploy 
+
+```bash
+npm run deploy
+```
+
+
+- Add Binary Media Types in Amazon API Gateway Settings
 
 ```txt
 multipart/form-data
 */*
 ```
+- Test endpoint using [Insomnia](https://insomnia.rest/download/)
 
-Deploy 
-
-```bash
-npm run deploy
-```
 ### Endpoint URL
 URL: [ https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify]( https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify)
 
