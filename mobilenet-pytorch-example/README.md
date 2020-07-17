@@ -9,10 +9,10 @@ Deploy pretrained [MobileNet-V2](https://pytorch.org/hub/pytorch_vision_mobilene
 ![Input](assets/input.jpg)
 
 ### Screen shot
-![demo](assets/demo.jpg)
+![demo](assets/demo.png)
 
 ### Endpoint URL
-URL: [ https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify]( https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify)
+URL: [https://3njah24gii.execute-api.ap-south-1.amazonaws.com/dev/classify]( https://3njah24gii.execute-api.ap-south-1.amazonaws.com/dev/classify)
 
 
 ----------
@@ -103,7 +103,7 @@ multipart/form-data
 - Test endpoint using [Insomnia](https://insomnia.rest/download/)
 
 ### Endpoint URL
-URL: [ https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify]( https://7axvk27op0.execute-api.ap-south-1.amazonaws.com/dev/classify)
+URL: [https://3njah24gii.execute-api.ap-south-1.amazonaws.com/dev/classify](https://3njah24gii.execute-api.ap-south-1.amazonaws.com/dev/classify)
 
 Used Insomnia(https://insomnia.rest/download/) to query Endpoint as shown in Demo.
 
