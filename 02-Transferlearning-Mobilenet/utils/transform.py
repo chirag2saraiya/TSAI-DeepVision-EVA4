@@ -20,9 +20,9 @@ class DataClass():
         return self.train_dir,self.valid_dir
 
 
-"""
-Below we take a look at the number of images in each category and the size of the images.
-"""
+        """
+            Below we take a look at the number of images in each category and the size of the images.
+        """
     def show_number_of_data_in_class(self):
         classes = []
         n_train = []
@@ -44,20 +44,20 @@ Below we take a look at the number of images in each category and the size of th
         print(classDf)
 
 
-"""
-Image Preprocessing
-To prepare the images for our network, we have to resize them to 224 x 224 and normalize each color channel by subtracting a mean value and dividing by a standard deviation.
-We will also augment our training data in this stage.
-These operations are done using image transforms, which prepare our data for a neural network.
+        """
+        Image Preprocessing
+        To prepare the images for our network, we have to resize them to 224 x 224 and normalize each color channel by subtracting a mean value and dividing by a standard deviation.
+        We will also augment our training data in this stage.
+        These operations are done using image transforms, which prepare our data for a neural network.
 
-Data Augmentation
-Because there are a limited number of images in some categories, we can use image augmentation to artificially increase the number of images "seen" by the network.
-This means for training, we randomly resize and crop the images and also flip them horizontally.
-A different random transformation is applied each epoch (while training), so the network effectively sees many different versions of the same image.
-All of the data is also converted to Torch Tensors before normalization. The validation and testing data is not augmented but is only resized and normalized.
-The normalization values are standardized for Imagenet.
+        Data Augmentation
+        Because there are a limited number of images in some categories, we can use image augmentation to artificially increase the number of images "seen" by the network.
+        This means for training, we randomly resize and crop the images and also flip them horizontally.
+        A different random transformation is applied each epoch (while training), so the network effectively sees many different versions of the same image.
+        All of the data is also converted to Torch Tensors before normalization. The validation and testing data is not augmented but is only resized and normalized.
+        The normalization values are standardized for Imagenet.
 
-"""
+        """
     def get_image_transform(self):
         # Image transformations
         image_transforms = {
@@ -84,9 +84,9 @@ The normalization values are standardized for Imagenet.
         }
         return image_transforms
 
-"""
-To show how augmentation works, we need to write a function that will plot a tensor as an image.
-"""
+        """
+        To show how augmentation works, we need to write a function that will plot a tensor as an image.
+        """
     def imshow_tensor(self, image, ax=None, title=None):
         """Imshow for Tensor."""
         if ax is None:
@@ -104,15 +104,16 @@ To show how augmentation works, we need to write a function that will plot a ten
         if title is not None:
             plt.title(title)
         return ax, image
-"""
-Data Iterators
-To avoid loading all of the data into memory at once, we use training DataLoaders.
-First, we create a dataset object from the image folders, and then we pass these to a DataLoader.
-At training time, the DataLoader will load the images from disk, apply the transformations, and yield a batch.
-To train and validation, we'll iterate through all the batches in the respective DataLoader.
-One crucial aspect is to shuffle the data before passing it to the network.
-This means that the ordering of the image categories changes on each pass through the data (one pass through the data is one training epoch).
-"""
+
+        """
+        Data Iterators
+        To avoid loading all of the data into memory at once, we use training DataLoaders.
+        First, we create a dataset object from the image folders, and then we pass these to a DataLoader.
+        At training time, the DataLoader will load the images from disk, apply the transformations, and yield a batch.
+        To train and validation, we'll iterate through all the batches in the respective DataLoader.
+        One crucial aspect is to shuffle the data before passing it to the network.
+        This means that the ordering of the image categories changes on each pass through the data (one pass through the data is one training epoch).
+        """
     def get_dataloader(self, batch_size):
         image_transforms = self.get_image_transform()
         dataset_train = torchvision.datasets.ImageFolder(root=self.train_dir, transform=image_transforms['train'])

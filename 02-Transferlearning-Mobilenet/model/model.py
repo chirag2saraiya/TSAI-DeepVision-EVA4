@@ -6,7 +6,7 @@ from torch.optim import lr_scheduler
 
 
 """
-Function to Load in Pretrained Model¶
+Function to Load in Pretrained Model
 We can refactor all that code into a single function that returns a pretrained model.
 This only accepts the vgg16 ,resnet50 and mobilenet_v2 at the moment but can be extended to use other models.
 """
