@@ -68,13 +68,13 @@ def get_pretrained_model(model_name):
 
   return model
 
-def get_optimiser():
+def get_optimiser(model):
   criterion = nn.CrossEntropyLoss()   # This criterion combines nn.LogSoftmax() and nn.NLLLoss() in one single class.
   # Observe that all parameters are being optimized
   optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
   return criterion,optimizer
 
-def get_scheduler():
+def get_scheduler(optimizer):
   # Decay LR by a factor of 0.1 every 7 epochs
   scheduler = lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1)
   return scheduler
