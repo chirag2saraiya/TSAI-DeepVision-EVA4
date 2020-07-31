@@ -116,7 +116,7 @@ def train(model,
 
     history = pd.DataFrame({  'train_loss' : train_loss_log,
                           'train_acc' : train_acc_log,
-                          'valid_loss' : test_acc_log,
+                          'valid_loss' : test_loss_log,
                           'valid_acc' : test_acc_log
                         })
 
