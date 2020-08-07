@@ -20,14 +20,20 @@ URL: [https://v1agl77crf.execute-api.ap-south-1.amazonaws.com/dev/classify](http
 
 ### Module Brief:
 Project is divided in to following modules
+
 - utils (contains utility)
+
   split_data     -> Contains python package to split data into. training and test data, as per partition size as input.
+  
   transform      -> Contains DataClass, which is having functions to operate on Image data.
                     Function for Image transform , getting Dataloader, Displaying Image data, Displaying statistics for number of images in each class
+                    
   model_analysis -> Contains functions for plotting Traing and Test accuracy statistics, and for displaying missclassified images for individual class
 
 - model (contains model related modules)
+
   model          -> Contains generalise functions to download pre trained model as per model name, also contains getting optimizer and schedular functions
+  
   train          -> Contains function for training model for number of epoch as input, along with optimizer schedular etc as other required inputs.
 
 - Sessionp2s2_MobileNetV2.ipynb  -> Colab file to run above modules in sequential format 
