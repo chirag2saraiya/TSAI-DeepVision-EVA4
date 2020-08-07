@@ -18,7 +18,7 @@ import subprocess
 import sys
 
 try:
-    import split_folders
+    import splitfolders
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", 'split-folders'])
 finally:
@@ -28,4 +28,4 @@ def split_data_folder(input_folder, output_folder, train_ratio=0.8):
     # Split with a ratio.
     # To only split into training and validation set, set a tuple to `ratio`, i.e, `(.8, .2)`.
     test_ratio = 1.0-train_ratio
-    split_folders.ratio(input_folder, output=output_folder, seed=1337, ratio=(train_ratio, test_ratio))
+    splitfolders.ratio(input_folder, output=output_folder, seed=1337, ratio=(train_ratio, test_ratio))
