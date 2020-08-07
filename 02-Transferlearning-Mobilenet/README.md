@@ -26,6 +26,7 @@ Project is divided in to following modules
   split_data     -> Contains python package to split data into. training and test data, as per partition size as input.
   
   transform      -> Contains DataClass, which is having functions to operate on Image data.
+  
                     Function for Image transform , getting Dataloader, Displaying Image data, Displaying statistics for number of images in each class
                     
   model_analysis -> Contains functions for plotting Traing and Test accuracy statistics, and for displaying missclassified images for individual class
@@ -46,10 +47,10 @@ PyTorch has many pretrained models we can use. All of these models have been tra
 
 ![Custom model](https://github.com/chirag2saraiya/TSAI-DeepVision-EVA4/blob/master/02-Transferlearning-Mobilenet/assets/custom_mobilenet.png)
 
-## Note: In this Project we are using mobilenet_v2 pretrained model
+### Note: In this Project we are using mobilenet_v2 pretrained model
 
 # Approach
-The approach for using a pre-trained image recognition model is well-established:
+The approach for using a pre-trained image recognition model :
 
 1. Load in pre-trained weights from a network trained on a large dataset
 2. Freeze all the weights in the lower (convolutional) layers
