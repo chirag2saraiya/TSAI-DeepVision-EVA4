@@ -22,7 +22,7 @@ try:
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", 'split-folders'])
 finally:
-    import split_folders
+    import splitfolders
 
 def split_data_folder(input_folder, output_folder, train_ratio=0.8):
     # Split with a ratio.
