@@ -53,9 +53,9 @@ PyTorch has many pretrained models we can use. All of these models have been tra
 
 ![Custom model](https://github.com/chirag2saraiya/TSAI-DeepVision-EVA4/blob/master/02-Transferlearning-Mobilenet/assets/custom_mobilenet_model.png)
 
-### Note: In this Project we are using mobilenet_v2 pretrained model
+#### Note: In this Project we are using mobilenet_v2 pretrained model
 
-# Approach
+### Approach
 The approach for using a pre-trained image recognition model :
 
 1. Load in pre-trained weights from a network trained on a large dataset
