@@ -39,6 +39,14 @@ Project is divided in to following modules
 
 
 ### Resizing Strategy
+The dataset has been collected from various sources on the internet hence it had variety of sizes. Also it was observed that there was variety in type of image files as well and many images were corrupted or not images at all. Thus we first manually cleaned the dataset and resized it to 300x300 jpeg images. During this process we removed all the corrupted and unsuitable images. After resizing we uploaded the dataset to google drive and utilized the same for training.
+
+Since we are using pretrained MobileNetV2 model as base we must have 224x224 as input image size. Hence during the training we followed below mentioned resizing and augmentation strategy.  
+1. Random resize and crop to 256x256
+2. Random rotation +/- 15 Degrees
+3. Random color Jitter
+4. Random Horizontal flips
+5. Center Crop to 224x224
 
 ### The Model
 PyTorch has many pretrained models we can use. All of these models have been trained on Imagenet which consists of millions of images across 1000 categories. What we want to do with pretrained models is freeze the early layers, and replace the classification module with our own.
