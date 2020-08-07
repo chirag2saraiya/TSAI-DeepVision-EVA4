@@ -1,8 +1,7 @@
 # Session1: MobileNets And Shufflenets
 
 ## Project Statement:  
-Train [MobileNet-V2](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/) model on custom dataset (4 classes Flying Birds, Large Quadcopters, Small Quadcopters and Winged Drones) and deploy
-it to AWS. 
+Use pre trained [MobileNet-V2](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/) model on custom dataset (4 classes Flying Birds, Large Quadcopters, Small Quadcopters and Winged Drones) and deploy it to AWS using serverless lamda architecture. 
 
 ## Demo
 ### Input Image
@@ -26,7 +25,6 @@ Project is divided in to following modules
   split_data     -> Contains python package to split data into. training and test data, as per partition size as input.
   
   transform      -> Contains DataClass, which is having functions to operate on Image data.
-  
                     Function for Image transform , getting Dataloader, Displaying Image data, Displaying statistics for number of images in each class
                     
   model_analysis -> Contains functions for plotting Traing and Test accuracy statistics, and for displaying missclassified images for individual class
