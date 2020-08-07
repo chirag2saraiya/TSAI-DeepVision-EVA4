@@ -53,9 +53,9 @@ The approach for using a pre-trained image recognition model :
 1. Load in pre-trained weights from a network trained on a large dataset
 2. Freeze all the weights in the lower (convolutional) layers
 3. Replace the classifier (fully connected) part of the network with a custom classifier
-  * Here we have added 2 fully connected layers (1048 to 256 and 256 to 4) in between last layer and final classifier output
-    * This strategy is used , since we thought It would be better to have one hop of extra layer to avoid directly reducing number of nodes from 1048 to 4.
-  * Number of outputs must be set equal to the number of classes
+    * Here we have added 2 fully connected layers (1048 to 256 and 256 to 4) in between last layer and final classifier output
+      * This strategy is used , since we thought It would be better to have one hop of extra layer to avoid directly reducing number of nodes from 1048 to 4.
+    * Number of outputs must be set equal to the number of classes
 4. Train only the custom classifier (fully connected) layers for the task
   
 The idea behind pre-training is the early convolutional layers of a cnn extract features that are relevant for many image recognition tasks. The later, fully-connected layers, specialize to the specific dataset by learning higher-level features. Therefore, we can use the already trained convolutional layers while training only the fully-connected layers on our own dataset. Pre-trained networks have proven to be reasonably successful for a variety of tasks, and result in a significant reduction in training time and usually increases in performance.
