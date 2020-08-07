@@ -23,6 +23,7 @@ URL: [https://v1agl77crf.execute-api.ap-south-1.amazonaws.com/dev/classify](http
 ### Resizing Strategy
 
 ### The Model
+![Custom model](https://github.com/chirag2saraiya/TSAI-DeepVision-EVA4/blob/master/02-Transferlearning-Mobilenet/assets/custom_mobilenet.png)
 
 ### Training Analysis
 ![LossAccuracyCurve](https://github.com/chirag2saraiya/TSAI-DeepVision-EVA4/blob/master/02-Transferlearning-Mobilenet/assets/loss_Accuracy_curves.png)
