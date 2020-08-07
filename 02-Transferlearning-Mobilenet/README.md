@@ -51,7 +51,7 @@ Since we are using pretrained MobileNetV2 model as base we must have 224x224 as 
 ### The Model
 PyTorch has many pretrained models we can use. All of these models have been trained on Imagenet which consists of millions of images across 1000 categories. What we want to do with pretrained models is freeze the early layers, and replace the classification module with our own.
 
-![Custom model](https://github.com/chirag2saraiya/TSAI-DeepVision-EVA4/blob/master/02-Transferlearning-Mobilenet/assets/custom_mobilenet.png)
+![Custom model](https://github.com/chirag2saraiya/TSAI-DeepVision-EVA4/blob/master/02-Transferlearning-Mobilenet/assets/custom_mobilenet_model.png)
 
 ### Note: In this Project we are using mobilenet_v2 pretrained model
 
