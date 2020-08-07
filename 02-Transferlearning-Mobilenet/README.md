@@ -68,9 +68,12 @@ The approach for using a pre-trained image recognition model :
   
 The idea behind pre-training is the early convolutional layers of a cnn extract features that are relevant for many image recognition tasks. The later, fully-connected layers, specialize to the specific dataset by learning higher-level features. Therefore, we can use the already trained convolutional layers while training only the fully-connected layers on our own dataset. Pre-trained networks have proven to be reasonably successful for a variety of tasks, and result in a significant reduction in training time and usually increases in performance.
 
-The Colab file can be found [here](https://colab.research.google.com/drive/1XHDqg6mQuHLFVsn017IzU2ogDx00t5hE?usp=sharing) or [here](https://github.com/chirag2saraiya/TSAI-DeepVision-EVA4/blob/master/02-Transferlearning-Mobilenet/Sessionp2s2_MobileNetV2.ipynb)
+The Colab file can be found [here](https://colab.research.google.com/drive/1XHDqg6mQuHLFVsn017IzU2ogDx00t5hE?usp=sharing) or [here](https://github.com/chirag2saraiya/TSAI-DeepVision-EVA4/blob/master/02-Transferlearning-Mobilenet/Sessionp2s2_MobileNetV2.ipynb).
 
 ### Training Analysis
+
+We are able to achieve best test accuracy of **84.26%** with 20 epochs of training and batch_size of 128. We are using SGD optimizer.
+
 ![LossAccuracyCurve](https://github.com/chirag2saraiya/TSAI-DeepVision-EVA4/blob/master/02-Transferlearning-Mobilenet/assets/loss_Accuracy_curves.png)
 
 ### Missclassified Images  
