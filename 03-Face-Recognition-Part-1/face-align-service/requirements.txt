@@ -1,0 +1,4 @@
+dlib==19.21.0
+matplotlib==3.3.0
+opencv-python==4.1.2.30
+requests_toolbelt

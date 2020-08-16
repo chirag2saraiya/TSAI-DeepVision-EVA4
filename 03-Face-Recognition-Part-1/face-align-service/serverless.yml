@@ -1,0 +1,60 @@
+service: face-align-service
+
+
+provider:
+  name: aws
+  runtime: python3.7
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+  environment:
+    S3_BUCKET: face-alignment-s3
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - s3:getObject
+      Resource: arn:aws:s3:::face-alignment-s3/*
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    zip: true
+    slim: true
+    strip: false
+    noDeploy:
+      - docutils
+      - jmespath
+      - pip
+      - python-dateutil
+      - setuptools
+      - six
+      - tensorboard
+    useStaticCache: true
+    useDownloadCache: true
+    cacheLocation: "./cache"
+
+package:
+  individually: false
+  exclude:
+    - package.json
+    - package-log.json
+    - node_modules/**
+    - cache/**
+    - test/**
+    - __pycache__/**
+    - .pytest_cache/**
+    - model/**
+
+functions:
+  classify_image:
+    handler: handler.detect_face
+    memorySize: 3008
+    timeout: 60
+    events:
+      - http:
+          path: align
+          method: post
+          cors: true
+
+plugins:
+  - serverless-python-requirements
