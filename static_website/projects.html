@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="grid-x grid-margin-x" style="margin-top:2%;">
+      <div class="large-l2 cell">
+        <h4 id='imageClassifiers'>Image Classifiers</h4>
+      </div>
+      <div class="large-4 cell">
+        <label for="resnet34FileUpload">Please chhose image file you want to classify.</label>
+        <input type="file" id="resnet34FileUpload">
+      </div>
+      <div class="large-8 cell">
+        <input type="button" id="btnResNetUpload" class="button" value="Classify Image">
+      </div>
+      <p id="result"></p>
+    </div>
+
+    <div class="grid-x grid-margin-x" style="margin-top:2%;">
+      <div class="large-l2 cell">
+        <h4 id='classifierMobilenet'>Image Classifiers</h4>
+      </div>
+      <div class="large-4 cell">
+        <label for="mobileNetFileUpload">Please chhose image file you want to classify.</label>
+        <input type="file" id="mobileNetFileUpload">
+      </div>
+      <div class="large-8 cell">
+        <input type="button" id="btnMobileNetUpload" class="button" value="Classify Image">
+      </div>
+      <p id="resultMobileNet"></p>
+    </div>
+
+
+    <div class="grid-x grid-margin-x" style="margin-top:2%;">
+      <div class="large-l2 cell">
+        <h4 id='faceAlignment'>Face Alignemnt</h4>
+      </div>
+      <div class="large-4 cell">
+        <label for="faceFileUpload">Please chhose image file you want to classify.</label>
+        <input type="file" id="faceFileUpload">
+      </div>
+      <div class="large-8 cell">
+        <input type="button" id="btnFaceUpload" class="button" value="Face Alignment">
+      </div>
+      <img id="faceResult" />
+      <p id="errorMsg"></p>
+
+    </div>
+
+
+
+  </body>
+  <script src="scripts/jquery-3.3.1.min.js"></script>
+  <script src="scripts/upload.js"></script>
+</html>
