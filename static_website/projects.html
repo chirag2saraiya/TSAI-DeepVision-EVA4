@@ -10,7 +10,7 @@
         <h4 id='imageClassifiers'>Image Classifiers</h4>
       </div>
       <div class="large-4 cell">
-        <label for="resnet34FileUpload">Please chhose image file you want to classify.</label>
+        <label for="resnet34FileUpload">Please choose image file you want to classify.</label>
         <input type="file" id="resnet34FileUpload">
       </div>
       <div class="large-8 cell">
@@ -24,7 +24,7 @@
         <h4 id='classifierMobilenet'>Image Classifiers</h4>
       </div>
       <div class="large-4 cell">
-        <label for="mobileNetFileUpload">Please chhose image file you want to classify.</label>
+        <label for="mobileNetFileUpload">Please choose image file you want to classify.</label>
         <input type="file" id="mobileNetFileUpload">
       </div>
       <div class="large-8 cell">
@@ -39,7 +39,7 @@
         <h4 id='faceAlignment'>Face Alignemnt</h4>
       </div>
       <div class="large-4 cell">
-        <label for="faceFileUpload">Please chhose image file you want to classify.</label>
+        <label for="faceFileUpload">Please choose face image file you want to align.</label>
         <input type="file" id="faceFileUpload">
       </div>
       <div class="large-8 cell">
@@ -50,6 +50,26 @@
 
     </div>
 
+
+    <div class="grid-x grid-margin-x" style="margin-top:2%;">
+      <div class="large-l2 cell">
+        <h4 id='faceSwap'>Face Swapping</h4>
+      </div>
+      <div class="large-4 cell">
+        <label for="faceFileUpload1">Please choose image File1.</label>
+        <input type="file" id="file1">
+      </div>
+      <div class="large-4 cell">
+        <label for="faceFileUpload2">Please choose image File2.</label>
+        <input type="file" id="file2">
+      </div>
+      <div class="large-8 cell">
+        <input type="button" id="btnFaceSwap" class="button" value="Face Swap">
+      </div>
+      <img id="faceSwapResult" />
+      <p id="errorMsg"></p>
+
+    </div>
 
 
   </body>

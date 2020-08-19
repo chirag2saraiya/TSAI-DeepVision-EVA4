@@ -7,11 +7,7 @@ import dlib
 import numpy as np
 import faceBlendCommon as fbc
 import cv2
-import matplotlib
 import sys,time
-
-matplotlib.rcParams['figure.figsize'] = (6.0,6.0)
-matplotlib.rcParams['image.cmap'] = 'gray'
 
 # Landmark model location
 PREDICTOR_PATH =  "./shape_predictor_68_face_landmarks.dat"
@@ -137,12 +133,11 @@ def face_swap(event, context):
 
         image = swap_face_image(image_bytes1=picture1.content, image_bytes2=picture2.content)
         print('Aligned face return') 
-        filename = picture.headers[b'Content-Disposition'].decode().split(';')[1].split('=')[1]
-        if len(filename) < 4:
-            filename = picture.headers[b'Content-Disposition'].decode().split(';')[2].split('=')[1]
-       
+        
         encode = base64.b64encode(image)
         encode = encode.decode("utf-8") 
+
+        face = 'True'
 
         print('Returning Image.......')
         return {
@@ -152,7 +147,7 @@ def face_swap(event, context):
                 'Access-Control-Allow-Origin': '*',
                 "Access-Control-Allow-Credentials": True
             },
-            "body": json.dumps({"img": encode})
+            "body": json.dumps({"img": encode, "result": face})
           }
     except Exception as e:
         print('classify_image',repr(e))

@@ -31,6 +31,51 @@ $.ajax({
 };
 
 
+function uploadAndFaceSwapImage(){
+  var fileInput1 = document.getElementById('file1').files;
+  var fileInput2 = document.getElementById('file2').files;
+  if (!fileInput1.length || !fileInput2.length ){
+    return alert('Please Upload both the image');
+  }
+
+  var file1 = fileInput1[0];
+  var file2 = fileInput2[0];
+  var filename1 = file1.name
+  var filename2 = file2.name
+
+  var formData = new FormData();
+  formData.append(filename1, file1);
+  formData.append(filename2, file2);
+
+  console.log(filename1);
+  console.log(filename2);
+
+  $.ajax({
+        async: true,
+        crossDomain: true,
+        method: 'POST',
+        url: 'https://sybtgzac4d.execute-api.ap-south-1.amazonaws.com/dev/align',
+        data: formData,
+        processData: false,
+        contentType: false,
+        mimeType: "multipart/form-data",
+  })
+  .done(function(response){
+    response = JSON.parse(response);
+
+    $('#faceSwapResult').attr('src', 'data:image/jpeg;base64,'+response.img);
+    //console.log(response.img);
+    //if(response.result == "True"){
+    //$('#faceSwapResult').attr('src', 'data:image/jpeg;base64,'+response.img);
+    //}else{
+  //document.getElementById('errorMsg').textContent = "Please upload Valid Image (Containing only One Face)";
+  //}
+  
+  })
+  .fail(function() {alert ("There was an error while sending request to face swap service."); });
+};
+
+
 function mobilenetUploadAndClassifyImage(){
   var fileInput = document.getElementById('mobileNetFileUpload').files;
   if (!fileInput.length){
@@ -44,7 +89,6 @@ function mobilenetUploadAndClassifyImage(){
   formData.append(filename, file);
 
   console.log(filename);
-
 
 $.ajax({
       async: true,
@@ -60,7 +104,7 @@ $.ajax({
   console.log(response);
   document.getElementById('resultMobileNet').textContent = response;
 })
-.fail(function() {alert ("There was an error while sending prediction request to resnet34 model."); });
+.fail(function() {alert ("There was an error while sending prediction request to MobileNet model."); });
 };
 
 
@@ -105,9 +149,10 @@ document.getElementById('errorMsg').textContent = "Please upload Valid Image (Co
 }
 //$('#faceResult').attr('src', response);
 })
-.fail(function() {alert ("There was an error while sending prediction request to resnet34 model."); });
+.fail(function() {alert ("There was an error while sending request to Face Alignment service."); });
 };
 
 $('#btnFaceUpload').click(uploadAndAlignFace);
 $('#btnResNetUpload').click(uploadAndClassifyImage);
 $('#btnMobileNetUpload').click(mobilenetUploadAndClassifyImage);
+$('#btnFaceSwap').click(uploadAndFaceSwapImage);
