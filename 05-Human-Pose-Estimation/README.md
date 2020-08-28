@@ -1,3 +1,9 @@
 # Simple Baselines for Human Pose Estimation and Tracking
 
-- We have reffered [Simple Baseline for HPE and tracking (Links to an external site.)](https://github.com/Microsoft/human-pose-estimation.pytorch) blog and [Paper](https://arxiv.org/pdf/1804.06208.pdf) 
+We have reffered [Simple Baseline for HPE and tracking ](https://github.com/Microsoft/human-pose-estimation.pytorch) blog and [Paper](https://arxiv.org/pdf/1804.06208.pdf) 
+
+- As other approaches have become complex,this work aimed to ease the problem by asking a question, "how good could a simple method be?" 
+- This approach involves a few deconvolutional layers added on a backbone network, ResNet. 
+- This approach adds a few deconvolutional layers over the last convolution stage in the ResNet, called C5.
+- They adopted this structure because it is arguably the simplest to generate heatmaps from deep and low resolution features and also adopted in the state-of-the-art Mask R-CNN
+- By default, three deconvolutional layers with batch normalization and ReLU activation are used. Each layer has 256 filters with 4 × 4 kernel. The stride is 2.    A 1 × 1 convolutional layer is added at last to generate predicted heatmaps {H1 . . . Hk} for all k key points.
