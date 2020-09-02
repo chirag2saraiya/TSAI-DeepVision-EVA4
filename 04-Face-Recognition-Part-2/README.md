@@ -22,7 +22,8 @@ For face recognition we used a Inception-Resnet based architecture to recognize 
 
 ![](https://1.bp.blogspot.com/-O7AznVGY9js/V8cV_wKKsMI/AAAAAAAABKQ/maO7n2w3dT4Pkcmk7wgGqiSX5FUW2sfZgCLcB/s1600/image00.png)
 
-**Blog**
+# Training
+
 We have followed [this](https://towardsdatascience.com/finetune-a-facial-recognition-classifier-to-recognize-your-face-using-pytorch-d00a639d9a79) blog for training LFW + 10 politician dataset.
 
 - "Amit_Shah"
@@ -37,3 +38,17 @@ We have followed [this](https://towardsdatascience.com/finetune-a-facial-recogni
 -	"Smriti_Irani"
 -	"Sonia_Gandhi"
 -	"Yogi_Adityanath"
+
+# Uploading to AWS Lamda
+
+- Uploaded model trained via above method to S3 bucket.
+- Used same [dlib](https://github.com/chirag2saraiya/TSAI-DeepVision-EVA4/tree/master/03-Face-Recognition-Part-1) lambda for detecting and aligning face
+- Querying image to train model uploaded to S3 bucket
+
+# Reference
+
+- https://towardsdatascience.com/finetune-a-facial-recognition-classifier-to-recognize-your-face-using-pytorch-d00a639d9a79
+
+- https://github.com/davidsandberg/facenet
+
+
