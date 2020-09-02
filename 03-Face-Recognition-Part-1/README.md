@@ -2,8 +2,8 @@ Static Website Link: http://www.ai-genie.com.s3-website.ap-south-1.amazonaws.com
 
 # Problem Statement
 
-1- Create a Face Alignment App on AWS Lambda , where if someone uploads a face (check that by using dlib face detector), you return aligned face. Image with more than 1 face is not processed for alignment. 
-2- Implement Face Swap Application as extension of above concept
+- Create a Face Alignment App on AWS Lambda , where if someone uploads a face (check that by using dlib face detector), you return aligned face. Image with more than 1 face is not processed for alignment. 
+- Implement Face Swap Application as extension of above concept
 
 # DLib
 
