@@ -30,7 +30,7 @@ In the new 5-point model, the landmark points consist of 2 points at the corners
 # Face Swap Application
 
 ### Input Image
-![input](assets/input_image.jpg)
+![input](assets/input_image.png)
 
 ### Output Image
 ![output](assets/faceswap.jpg)
