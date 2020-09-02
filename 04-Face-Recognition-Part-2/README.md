@@ -24,20 +24,20 @@ For face recognition we used a Inception-Resnet based architecture to recognize 
 
 # Training
 
-We have followed [this](https://towardsdatascience.com/finetune-a-facial-recognition-classifier-to-recognize-your-face-using-pytorch-d00a639d9a79) blog for training LFW + 10 politician dataset.
+We have followed [this](https://towardsdatascience.com/finetune-a-facial-recognition-classifier-to-recognize-your-face-using-pytorch-d00a639d9a79) blog for training LFW + 10 Indian politician dataset.
 
-- "Amit_Shah"
-- "Arvind_Kejriwal"
-- "Jayalalitha"
--	"Mamata_Banerjee"
--	"Mayawati"
--	"Narendra_Modi"
--	"Rahul_Gandhi"
--	""Shashi_Tharoor"
--	"Shushma_Swaraj"
--	"Smriti_Irani"
--	"Sonia_Gandhi"
--	"Yogi_Adityanath"
+- Amit_Shah
+- Arvind_Kejriwal
+- Jayalalitha
+-	Mamata_Banerjee
+-	Mayawati
+-	Narendra_Modi
+-	Rahul_Gandhi
+-	Shashi_Tharoor
+-	Shushma_Swaraj
+-	Smriti_Irani
+-	Sonia_Gandhi
+-	Yogi_Adityanath
 
 # Uploading to AWS Lamda
 
