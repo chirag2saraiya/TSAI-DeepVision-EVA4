@@ -1,6 +1,6 @@
 # Problem Statement
 
-- Collect 10 facial images of 10 people you know (stars, politicians, etc). Add it to [LFW] (http://vis-www.cs.umass.edu/lfw/lfw-funneled.tgz) dataset. 
+- Collect 10 facial images of 10 people you know (stars, politicians, etc). Add it to [LFW](http://vis-www.cs.umass.edu/lfw/lfw-funneled.tgz) dataset. 
 
 - Train with the help of [repo](https://github.com/davidsandberg/facenet) and upload the Face Recognition model to AWS Lambda
 
