@@ -7,7 +7,7 @@ Static Website Link: http://www.ai-genie.com.s3-website.ap-south-1.amazonaws.com
 
 # DLib
 
-![DLib](http://dlib.net/) is an open-source Machine Learning library written in C++ with python binding. It is extremely portable and can be used on multiple platforms (including mobiles).
+[DLib](http://dlib.net/) is an open-source Machine Learning library written in C++ with python binding. It is extremely portable and can be used on multiple platforms (including mobiles).
 
 # DLib's LandMark Detection Model
 
@@ -25,13 +25,13 @@ Face Alignment is helpful in Face recognition systems.We will be using a 5-point
 
 In the new 5-point model, the landmark points consist of 2 points at the corners of the eye; for each eye and one point on the nose-tip. It is shown in the image given below.
 
-![landmark](assets/5_point_landmark.jpg)
+![landmark](assets/landmark.jpg)
 
 # Face Swap Application
 
 ### Input Image
-![input]()
+![input](assets/input_image.jpg)
 
 ### Output Image
-![output]()
+![output](assets/faceswap.jpg)
 
