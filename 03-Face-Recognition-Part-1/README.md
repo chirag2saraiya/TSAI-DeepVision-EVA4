@@ -18,12 +18,12 @@ Dlib has 2 Type of Land mark detection models
 # Face Alignment
 
 Face Alignment is helpful in Face recognition systems.We will be using a 5-point landmark detector released by dlib and also see how to perform Face Alignment using the model.
-![aligned]()
+![aligned](assets/aligned.jpg)
 
 # DLib's 5-Point Model
 
 In the new 5-point model, the landmark points consist of 2 points at the corners of the eye; for each eye and one point on the nose-tip. It is shown in the image given below.
-![landmark]()
+![landmark](assets/5_point_landmark.jpg)
 
 # Face Swap Application
 
