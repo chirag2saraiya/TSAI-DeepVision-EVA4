@@ -1,3 +1,6 @@
+# Static Website
+http://www.ai-genie.com.s3-website.ap-south-1.amazonaws.com/
+
 # Problem Statement
 
 - Collect 10 facial images of 10 people you know (stars, politicians, etc). Add it to [LFW](http://vis-www.cs.umass.edu/lfw/lfw-funneled.tgz) dataset. 
