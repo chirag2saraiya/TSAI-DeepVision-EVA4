@@ -1,3 +1,6 @@
+# Static Website
+http://www.ai-genie.com.s3-website.ap-south-1.amazonaws.com/
+
 # Simple Baselines for Human Pose Estimation and Tracking
 
 We have reffered [Simple Baseline for HPE and tracking ](https://github.com/Microsoft/human-pose-estimation.pytorch) blog and [Paper](https://arxiv.org/pdf/1804.06208.pdf) 
