@@ -1,0 +1,59 @@
+service: hpe-onnx-service
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+  environment:
+    S3_BUCKET: human-pose-estimation-onnx-model
+    MODEL_PATH: simple_pose_estimation.onnx
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - s3:getObject
+      Resource: arn:aws:s3:::human-pose-estimation-onnx-model/*
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    zip: true
+    slim: true
+    strip: false
+    noDeploy:
+      - docutils
+      - jmespath
+      - pip
+      - python-dateutil
+      - setuptools
+      - six
+      - tensorboard
+    useStaticCache: true
+    useDownloadCache: true
+    cacheLocation: "./cache"
+
+package:
+  individually: false
+  exclude:
+    - package.json
+    - package-log.json
+    - node_modules/**
+    - cache/**
+    - test/**
+    - __pycache__/**
+    - .pytest_cache/**
+    - model/**
+
+functions:
+  estimate_pose:
+    handler: handler.estimate_pose
+    memorySize: 3008
+    timeout: 60
+    events:
+      - http:
+          path: estimate_pose
+          method: post
+          cors: true
+
+plugins:
+  - serverless-python-requirements
