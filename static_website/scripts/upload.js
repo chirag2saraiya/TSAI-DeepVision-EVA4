@@ -218,8 +218,8 @@ function generateCarImage(){
 $.ajax({
       async: false,
       crossDomain: true,
-      method: 'GET',
-      url: 'https://gj9dozme20.execute-api.ap-south-1.amazonaws.com/dev/generate',
+      method: 'POST',
+      url: 'https://rum1owumx2.execute-api.ap-south-1.amazonaws.com/dev/generate_image',
       processData: false,
       contentType: false,
 })
