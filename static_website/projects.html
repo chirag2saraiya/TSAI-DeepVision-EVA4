@@ -71,21 +71,63 @@
 
     </div>
 
-<div class="grid-x grid-margin-x" style="margin-top:2%;">
+    <div class="grid-x grid-margin-x" style="margin-top:2%;">
       <div class="large-l2 cell">
-        <h4 id='faceRecognition'>Face Recognition</h4>
+        <h1 id='faceRecognition'>Indian Politician Face Recognition : </h1>
+        <h4 >Please upload any of the following politician photo </h4>
+        <ul>
+          <li>Amit_Shah</li>
+          <li>Arvind_Kejriwal</li>
+          <li>Jayalalitha</li>
+          <li>Mamata_Banerjee</li>
+          <li>Mayawati</li>
+          <li>Narendra_Modi</li>
+          <li>Rahul_Gandhi</li>
+          <li>Shashi_Tharoor</li>
+          <li>Shushma_Swaraj</li>
+          <li>Smriti_Irani</li>
+          <li>Sonia_Gandhi</li>
+          <li>Yogi_Adityanath</li>
+
+        </ul>
       </div>
       <div class="large-4 cell">
-        <label for="faceFileUpload">Please choose face image file you want to recognize.</label>
-        <input type="file" id="faceRecoFileUpload">
+        <label for="faceRecognitionUpload">Please choose image of a Person to recognise.</label>
+        <input type="file" id="faceRecognitionUpload">
       </div>
       <div class="large-8 cell">
-        <input type="button" id="btnFaceRecoUpload" class="button" value="Face Recognition">
+        <input type="button" id="btnFaceRecognitionUpload" class="button" value="Classify Image">
       </div>
-      <p id="resultFaceRecogition"></p>
-
+      <p id="faceRecognitionResult"></p>
     </div>
 
+    <div class="grid-x grid-margin-x" style="margin-top:2%;">
+          <div class="large-l2 cell">
+            <h4 id='poseEstimation'>Pose Estimation</h4>
+          </div>
+          <div class="large-4 cell">
+            <label for="faceFileUpload">Select Image to Estimate pose</label>
+            <input type="file" id="poseEstimateFileUpload">
+          </div>
+          <div class="large-8 cell">
+            <input type="button" id="btnPoseEstimateFileUpload" class="button" value="Pose Estimate">
+          </div>
+          <img id="poseEstimateResult" />
+          <p id="errorMsg"></p>
+
+        </div>
+
+        <div class="grid-x grid-margin-x" style="margin-top:2%;">
+              <div class="large-l2 cell">
+                <h4 id='generateCarImage'>Generate Car Image with DCGAN</h4>
+              </div>
+              <div class="large-8 cell">
+                <input type="button" id="btnGenerateCarImage" class="button" value="Generate Car Image">
+              </div>
+              <img id="ganResult" />
+              <p id="errorMsg"></p>
+
+            </div>
 
   </body>
   <script src="scripts/jquery-3.3.1.min.js"></script>
