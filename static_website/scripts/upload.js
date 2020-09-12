@@ -40,64 +40,12 @@ function uploadAndFaceSwapImage(){
 
   var file1 = fileInput1[0];
   var file2 = fileInput2[0];
-  var file3;
-  var file4;
   var filename1 = file1.name
   var filename2 = file2.name
 
-  var formData1 = new FormData();
-  formData1.append(filename1, file1);
-  
-  // Align first image
-  $.ajax({
-    async: false,
-    crossDomain: true,
-    method: 'POST',
-    url: 'https://noe3b7wagh.execute-api.ap-south-1.amazonaws.com/dev/align',
-    data: formData1,
-    processData: false,
-    contentType: false,
-    mimeType: "multipart/form-data",
-})
-.done(function(response){
-response = JSON.parse(response);
-console.log("aligned first image");
-$('#faceSwapResult').attr('src', 'data:image/jpeg;base64,'+response.img);
-file3 = response.img
-    
-  })
-  .fail(function() {alert ("There was an error while sending request to face swap service."); });
-
-
-  console.log(file3)
-  var formData2 = new FormData();
-  formData2.append(filename2, file2);
-
-  // Align first image
-  $.ajax({
-    async: false,
-    crossDomain: true,
-    method: 'POST',
-    url: 'https://noe3b7wagh.execute-api.ap-south-1.amazonaws.com/dev/align',
-    data: formData2,
-    processData: false,
-    contentType: false,
-    mimeType: "multipart/form-data",
-})
-.done(function(response){
-response = JSON.parse(response);
-file4 = response.img
-console.log("aligned second image");
-$('#faceSwapResult').attr('src', 'data:image/jpeg;base64,'+response.img);
-
-  })
-  .fail(function() {alert ("There was an error while sending request to face swap service."); });
-
-  //file4 = document.getElementById('faceSwapResult').src;
-  console.log(file4)
   var formData = new FormData();
-  formData.append(filename1, file3);
-  formData.append(filename2, file4);
+  formData.append(filename1, file1);
+  formData.append(filename2, file2);
 
   console.log(filename1);
   console.log(filename2);
@@ -122,7 +70,7 @@ $('#faceSwapResult').attr('src', 'data:image/jpeg;base64,'+response.img);
     //}else{
   //document.getElementById('errorMsg').textContent = "Please upload Valid Image (Containing only One Face)";
   //}
-  
+
   })
   .fail(function() {alert ("There was an error while sending request to face swap service."); });
 };
@@ -160,11 +108,6 @@ $.ajax({
 };
 
 
-
-
-
-
-
 function uploadAndAlignFace(){
   var fileInput = document.getElementById('faceFileUpload').files;
   if (!fileInput.length){
@@ -181,7 +124,7 @@ function uploadAndAlignFace(){
 
 
 $.ajax({
-      async: false,
+      async: true,
       crossDomain: true,
       method: 'POST',
       url: 'https://noe3b7wagh.execute-api.ap-south-1.amazonaws.com/dev/align',
@@ -204,73 +147,97 @@ document.getElementById('errorMsg').textContent = "Please upload Valid Image (Co
 .fail(function() {alert ("There was an error while sending request to Face Alignment service."); });
 };
 
-function uploadAlignRecognizeFace(){
-
-
-
-	console.log("Face Recognition service called");
-  var fileInput = document.getElementById('faceRecoFileUpload').files;
+function uploadAndRecogniseFace(){
+  var fileInput = document.getElementById('faceRecognitionUpload').files;
   if (!fileInput.length){
     return alert('Please choose a file to upload first.');
   }
 
   var file = fileInput[0];
-  var alignedFile;
   var filename = file.name
 
-  var formData1 = new FormData();
-  formData1.append(filename, file);
+  var formData = new FormData();
+  formData.append(filename, file);
 
   console.log(filename);
-  
-  // Align image
-  $.ajax({
-    async: false,
-    crossDomain: true,
-    method: 'POST',
-    url: 'https://noe3b7wagh.execute-api.ap-south-1.amazonaws.com/dev/align',
-    data: formData1,
-    processData: false,
-    contentType: false,
-    mimeType: "multipart/form-data",
-})
-.done(function(response){
-response = JSON.parse(response);
-console.log("aligned first image");
-alignedFile = response.img
-    
-  })
-  .fail(function() {alert ("There was an error while sending request to face align service."); });
-
-
-  console.log(alignedFile)
-  
-  var formData2 = new FormData();
-  formData2.append(filename, alignedFile);
-  
 
 
 $.ajax({
-      async: false,
+      async: true,
       crossDomain: true,
       method: 'POST',
-      url: 'https://z827uu153k.execute-api.ap-south-1.amazonaws.com/dev/recognize',
-      data: formData2,
+      url: 'https://1z54rldc98.execute-api.ap-south-1.amazonaws.com/dev/recognise',
+      data: formData,
       processData: false,
       contentType: false,
       mimeType: "multipart/form-data",
 })
 .done(function(response){
   console.log(response);
-  document.getElementById('resultFaceRecogition').textContent = response;
+  document.getElementById('faceRecognitionResult').textContent = response;
 })
-.fail(function() {alert ("There was an error while sending prediction request to Face Recognition model."); });
+.fail(function() {alert ("There was an error while sending prediction request to resnet34 model."); });
 };
 
 
+function uploadAndEstimatePose(){
+  var fileInput = document.getElementById('poseEstimateFileUpload').files;
+  if (!fileInput.length){
+    return alert('Please choose a file to upload first.');
+  }
+
+  var file = fileInput[0];
+  var filename = file.name
+
+  var formData = new FormData();
+  formData.append(filename, file);
+
+  console.log(filename);
+
+
+$.ajax({
+      async: false,
+      crossDomain: true,
+      method: 'POST',
+      url: 'https://bg6deyk7fg.execute-api.ap-south-1.amazonaws.com/dev/estimate_pose',
+      data: formData,
+      processData: false,
+      contentType: false,
+      mimeType: "multipart/form-data",
+})
+.done(function(response){
+  response = JSON.parse(response);
+  $('#poseEstimateResult').attr('src', 'data:image/jpeg;base64,'+response.img);
+//$('#faceResult').attr('src', response);
+})
+.fail(function() {alert ("There was an error while sending request to Human Pose Estimation service."); });
+};
+
+function generateCarImage(){
+
+$.ajax({
+      async: false,
+      crossDomain: true,
+      method: 'GET',
+      url: 'https://gj9dozme20.execute-api.ap-south-1.amazonaws.com/dev/generate',
+      processData: false,
+      contentType: false,
+})
+.done(function(response){
+  //response = JSON.parse(response);
+  $('#ganResult').attr('src', 'data:image/jpeg;base64,'+response.img);
+//$('#faceResult').attr('src', response);
+})
+.fail(function() {alert ("There was an error while sending request to GAN service."); });
+};
+
+
+
+
 $('#btnFaceUpload').click(uploadAndAlignFace);
+$('#btnFaceRecognitionUpload').click(uploadAndRecogniseFace);
 $('#btnResNetUpload').click(uploadAndClassifyImage);
 $('#btnMobileNetUpload').click(mobilenetUploadAndClassifyImage);
 $('#btnFaceSwap').click(uploadAndFaceSwapImage);
-$('#btnFaceRecoUpload').click(uploadAlignRecognizeFace);
-
+$('#btnPoseEstimateFileUpload').click(uploadAndEstimatePose);
+$('#btnGenerateCarImage').click(generateCarImage);
