@@ -199,7 +199,7 @@ $.ajax({
       async: false,
       crossDomain: true,
       method: 'POST',
-      url: 'https://bg6deyk7fg.execute-api.ap-south-1.amazonaws.com/dev/estimate_pose',
+      url: 'https://egzpg7zwt9.execute-api.ap-south-1.amazonaws.com/dev/estimate_pose',
       data: formData,
       processData: false,
       contentType: false,
