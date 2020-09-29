@@ -17,9 +17,6 @@ import json
 import numpy as np
 import copy
 
-from config import config
-from config import update_config
-import pose_resnet
 
 from requests_toolbelt.multipart import decoder
 
@@ -53,7 +50,7 @@ def get_decoded_car(model,image_bytes):
     image_transform = transforms.Compose([
                               transforms.Resize((96,96)),
                               transforms.ToTensor(),
-                              transforms.Normalize(mean=[0.485, 0.456, 0.406],std=[0.229, 0.224, 0.225])])
+                              transforms.Normalize(mean=[0.5, 0.5, 0.5],std=[0.5, 0.5, 0.5])])
     # indicate model evaluation mode
     model.eval()
 
@@ -74,10 +71,18 @@ def get_generated_image(event, context):
         picture = decoder.MultipartDecoder(body, content_type_header).parts[0]
         
         op_image = get_decoded_car(model,picture.content)
-
+        print("convert image to numpy==========")
+        op_np = op_image[0].detach().numpy()
+        print(op_np.shape)
+        op_np = np.squeeze(op_np,0)
+        print("Transpose Image=================")
+        print(op_np.shape)
+        final_img = np.transpose(op_np, (1, 2, 0))
+        print("Convert Numpy to PIL image====================")
+        final_img = Image.fromarray(np.uint8(final_img*255))
         print('Base 64 Encode=====================') 
         buf = io.BytesIO()
-        op_img.save(buf, format='JPEG')
+        final_img.save(buf, format='JPEG')
         byte_im = buf.getvalue()
         base64_pil_img = base64.b64encode(byte_im)
         base64_pil_img = base64_pil_img.decode("utf-8") 
