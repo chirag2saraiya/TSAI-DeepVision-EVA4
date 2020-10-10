@@ -41,7 +41,8 @@ SSIM (proposed to be closer to human perception compared to PSNR) measures the s
 - Texture Loss :      On account that the reconstructed image should have the same style (color, textures, contrast, etc) with the target image, texture loss is                           introduced in EnhanceNet. This loss function tries to optimize the Gram matrix of feature outputs inspired by the Style Transfer loss                               function.
 -  Adversarial Loss : Used in all GAN-related architectures, adversarial loss helps in fooling the discriminator and generally produces images which have better                           perceptual quality.
 
-SRGAN: [Github](https://github.com/leftthomas/SRGAN)
+### SRGAN implemtation reference
+[Github](https://github.com/leftthomas/SRGAN)
 
 ### Dataset
 
