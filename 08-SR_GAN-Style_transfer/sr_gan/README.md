@@ -5,6 +5,7 @@ Train SRGAN on the drone images dataset created. Target is to train an SRGAN net
 
 ### Hierarchically-structured taxonomy
 
+![taxonomy](assets/hierarchical_taxnomy.jpeg)
 
 ### Problem Definition 
 Image super-resolution aims at recovering the corresponding HR images from the LR images.
@@ -38,3 +39,20 @@ SSIM (proposed to be closer to human perception compared to PSNR) measures the s
 - Charbonnier Loss :  This loss function is used in LapSRN instead of the generic L2 loss. The results show that Charbonnier loss deals better with outliers and                           produces sharper images compared to those generated with L2 loss, which are generally smoother.
 - Content Loss or Perceptual Loss : Extract the feature map of HR images and fake HR image from VGG19 and compute the MSE between these two features. 
 - Texture Loss :      On account that the reconstructed image should have the same style (color, textures, contrast, etc) with the target image, texture loss is                           introduced in EnhanceNet. This loss function tries to optimize the Gram matrix of feature outputs inspired by the Style Transfer loss                               function.
+-  Adversarial Loss : Used in all GAN-related architectures, adversarial loss helps in fooling the discriminator and generally produces images which have better                           perceptual quality.
+
+SRGAN: [Github](https://github.com/leftthomas/SRGAN)
+
+### Dataset
+
+![data](assets/dataset.jpeg)
+
+### Results
+
+![data](assets/results.jpeg)
+
+
+
+
+
+
