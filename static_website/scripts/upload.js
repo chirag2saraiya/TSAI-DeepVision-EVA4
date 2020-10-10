@@ -232,6 +232,46 @@ $.ajax({
 };
 
 
+function uploadAndStyleTransferImage(){
+  var fileInput1 = document.getElementById('stylefile').files;
+  var fileInput2 = document.getElementById('contentfile').files;
+  if (!fileInput1.length || !fileInput2.length ){
+    return alert('Please Upload both the image');
+  }
+
+  var file1 = fileInput1[0];
+  var file2 = fileInput2[0];
+  var filename1 = file1.name
+  var filename2 = file2.name
+
+  var formData = new FormData();
+  formData.append(filename1, file1);
+  formData.append(filename2, file2);
+
+  console.log(filename1);
+  console.log(filename2);
+
+  $.ajax({
+        async: false,
+        crossDomain: true,
+        method: 'POST',
+        url: 'https://uteya23kh0.execute-api.ap-south-1.amazonaws.com/dev/classify',
+        data: formData,
+        processData: false,
+        contentType: false,
+        mimeType: "multipart/form-data",
+  })
+  .done(function(response){
+    response = JSON.parse(response);
+
+    $('#styleTransferResult').attr('src', 'data:image/jpeg;base64,'+response.img);
+   
+  })
+  .fail(function() {alert ("There was an error while sending request to face swap service."); });
+};
+
+
+
 
 
 $('#btnFaceUpload').click(uploadAndAlignFace);
@@ -241,3 +281,4 @@ $('#btnMobileNetUpload').click(mobilenetUploadAndClassifyImage);
 $('#btnFaceSwap').click(uploadAndFaceSwapImage);
 $('#btnPoseEstimateFileUpload').click(uploadAndEstimatePose);
 $('#btnGenerateCarImage').click(generateCarImage);
+$('#btnStyleTransfer').click(uploadAndStyleTransferImage);

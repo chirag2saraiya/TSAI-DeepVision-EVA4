@@ -128,6 +128,28 @@
               <p id="errorMsg"></p>
 
             </div>
+            
+
+    <div class="grid-x grid-margin-x" style="margin-top:2%;">
+      <div class="large-l2 cell">
+        <h4 id='styleTransfer'>Style Transfer</h4>
+      </div>
+      <div class="large-4 cell">
+        <label for="styleFileUpload">Please choose style image.</label>
+        <input type="file" id="stylefile">
+      </div>
+      <div class="large-4 cell">
+        <label for="contentFileUpload">Please choose content image.</label>
+        <input type="file" id="contentfile">
+      </div>
+      <div class="large-8 cell">
+        <input type="button" id="btnStyleTransfer" class="button" value="Transfer style">
+      </div>
+      <img id="styleTransferResult" />
+      <p id="errorMsg"></p>
+
+    </div>            
+            
 
   </body>
   <script src="scripts/jquery-3.3.1.min.js"></script>

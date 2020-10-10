@@ -1,0 +1,59 @@
+service: super-resolution-image-service
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+  environment:
+    S3_BUCKET: gauravp-super-resolution-models
+    MODEL_PATH: srgan_generator_JIT_model.pt
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - s3:getObject
+      Resource: arn:aws:s3:::gauravp-super-resolution-models/*
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    zip: true
+    slim: true
+    strip: false
+    noDeploy:
+      - docutils
+      - jmespath
+      - pip
+      - python-dateutil
+      - setuptools
+      - six
+      - tensorboard
+    useStaticCache: true
+    useDownloadCache: true
+    cacheLocation: "./cache"
+
+package:
+  individually: false
+  exclude:
+    - package.json
+    - package-log.json
+    - node_modules/**
+    - cache/**
+    - test/**
+    - __pycache__/**
+    - .pytest_cache/**
+    - model/**
+
+functions:
+  get_sr_image:
+    handler: handler.get_sr_image
+    memorySize: 3008
+    timeout: 60
+    events:
+      - http:
+          path: get_sr_image
+          method: post
+          cors: true
+
+plugins:
+  - serverless-python-requirements
