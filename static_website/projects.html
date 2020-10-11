@@ -126,11 +126,42 @@
               </div>
               <img id="ganResult" />
               <p id="errorMsg"></p>
-
             </div>
-            
 
-    <div class="grid-x grid-margin-x" style="margin-top:2%;">
+            <div class="grid-x grid-margin-x" style="margin-top:2%;">
+                  <div class="large-l2 cell">
+                    <h4 id='vaeImageGenerate'>VAE Car Image Generation</h4>
+                  </div>
+                  <div class="large-4 cell">
+                    <label for="faceFileUpload">Select Car Image to Generate Image from VAE </label>
+                    <input type="file" id="vaeImageUpload">
+                  </div>
+                  <div class="large-8 cell">
+                    <input type="button" id="btnVaeImageGenerate" class="button" value="VAE Image Generate">
+                  </div>
+                  <img id="vaeImageResult" />
+                  <p id="errorMsg"></p>
+
+                </div>
+
+<div class="grid-x grid-margin-x" style="margin-top:2%;">
+                  <div class="large-l2 cell">
+                    <h4 id='srImageGenerate'>Super Resolution Image Generation</h4>
+                  </div>
+                  <div class="large-4 cell">
+                    <label for="srFileUpload">Select Image to generate SR </label>
+                    <input type="file" id="srGANImageUpload">
+                  </div>
+                  <div class="large-8 cell">
+                    <input type="button" id="btnSRImageGenerate" class="button" value="SR Image Generate">
+                  </div>
+                  <img id="srGANImageResult" />
+                  <p id="errorMsg"></p>
+
+                </div>
+
+
+<div class="grid-x grid-margin-x" style="margin-top:2%;">
       <div class="large-l2 cell">
         <h4 id='styleTransfer'>Style Transfer</h4>
       </div>
@@ -149,7 +180,9 @@
       <p id="errorMsg"></p>
 
     </div>            
-            
+
+
+
 
   </body>
   <script src="scripts/jquery-3.3.1.min.js"></script>
