@@ -199,7 +199,7 @@ $.ajax({
       async: false,
       crossDomain: true,
       method: 'POST',
-      url: 'https://egzpg7zwt9.execute-api.ap-south-1.amazonaws.com/dev/estimate_pose',
+      url: 'https://bg6deyk7fg.execute-api.ap-south-1.amazonaws.com/dev/estimate_pose',
       data: formData,
       processData: false,
       contentType: false,
@@ -218,7 +218,7 @@ function generateCarImage(){
 $.ajax({
       async: false,
       crossDomain: true,
-      method: 'POST',
+      method: 'GET',
       url: 'https://rum1owumx2.execute-api.ap-south-1.amazonaws.com/dev/generate_image',
       processData: false,
       contentType: false,
@@ -230,6 +230,73 @@ $.ajax({
 })
 .fail(function() {alert ("There was an error while sending request to GAN service."); });
 };
+
+function uploadAndGenerateImage(){
+  var fileInput = document.getElementById('vaeImageUpload').files;
+  if (!fileInput.length){
+    return alert('Please choose a file to upload first.');
+  }
+
+  var file = fileInput[0];
+  var filename = file.name
+
+  var formData = new FormData();
+  formData.append(filename, file);
+
+  console.log(filename);
+
+
+$.ajax({
+      async: false,
+      crossDomain: true,
+      method: 'POST',
+      url: ' https://5breslh7il.execute-api.ap-south-1.amazonaws.com/dev/generate_image',
+      data: formData,
+      processData: false,
+      contentType: false,
+      mimeType: "multipart/form-data",
+})
+.done(function(response){
+  response = JSON.parse(response);
+  $('#vaeImageResult').attr('src', 'data:image/jpeg;base64,'+response.img);
+//$('#faceResult').attr('src', response);
+})
+.fail(function() {alert ("There was an error while sending request to VAE Car Image Generation service."); });
+};
+
+function uploadAndGenerateSRImage(){
+  var fileInput = document.getElementById('srGANImageUpload').files;
+  if (!fileInput.length){
+    return alert('Please choose a file to upload first.');
+  }
+
+  var file = fileInput[0];
+  var filename = file.name
+
+  var formData = new FormData();
+  formData.append(filename, file);
+
+  console.log(filename);
+
+
+$.ajax({
+      async: false,
+      crossDomain: true,
+      method: 'POST',
+      url: ' https://r0kbgz1xi0.execute-api.ap-south-1.amazonaws.com/dev/get_sr_image',
+      data: formData,
+      processData: false,
+      contentType: false,
+      mimeType: "multipart/form-data",
+})
+.done(function(response){
+  response = JSON.parse(response);
+  $('#srGANImageResult').attr('src', 'data:image/jpeg;base64,'+response.img);
+//$('#faceResult').attr('src', response);
+})
+.fail(function() {alert ("There was an error while sending request to VAE Car Image Generation service."); });
+};
+
 
 
 function uploadAndStyleTransferImage(){
@@ -272,8 +339,6 @@ function uploadAndStyleTransferImage(){
 
 
 
-
-
 $('#btnFaceUpload').click(uploadAndAlignFace);
 $('#btnFaceRecognitionUpload').click(uploadAndRecogniseFace);
 $('#btnResNetUpload').click(uploadAndClassifyImage);
@@ -281,4 +346,8 @@ $('#btnMobileNetUpload').click(mobilenetUploadAndClassifyImage);
 $('#btnFaceSwap').click(uploadAndFaceSwapImage);
 $('#btnPoseEstimateFileUpload').click(uploadAndEstimatePose);
 $('#btnGenerateCarImage').click(generateCarImage);
+$('#btnVaeImageGenerate').click(uploadAndGenerateImage);
+$('#btnSRImageGenerate').click(uploadAndGenerateImage);
 $('#btnStyleTransfer').click(uploadAndStyleTransferImage);
+
+
