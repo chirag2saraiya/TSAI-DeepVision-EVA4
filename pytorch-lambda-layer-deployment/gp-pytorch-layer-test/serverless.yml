@@ -22,6 +22,6 @@ functions:
           method: post
           cors: true
     layers:
-      - arn:aws:lambda:ap-south-1:503625344141:layer:gp-pytorch-torchvision-pillow:1
+      - arn:aws:lambda:ap-south-1:503625344141:layer:gp-pytorch-torchvision-pillow-layer:1
 
       
