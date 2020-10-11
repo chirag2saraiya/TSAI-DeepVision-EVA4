@@ -49,6 +49,9 @@ SSIM (proposed to be closer to human perception compared to PSNR) measures the s
 ![data](assets/dataset.jpeg)
 
 ### Results
+Below We can see results from SRGAN network after training for 50 epocs and 4x scale factor.
+Below imag is showing images in upscaling, Original and superresolution image in give sequence.
+
 
 ![data](assets/results.jpeg)
 
