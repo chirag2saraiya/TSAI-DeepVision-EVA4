@@ -1,0 +1,18 @@
+
+service: gp-pytorch-lambda-layer
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+
+layers:
+  gp-pytorch-torchvision-pillow:
+    package:
+      artifact: torchLayerPackages.zip
+    allowedAccounts:
+      - '*'
+
+
