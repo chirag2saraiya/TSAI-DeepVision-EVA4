@@ -347,3 +347,7 @@ $('#btnFaceSwap').click(uploadAndFaceSwapImage);
 $('#btnPoseEstimateFileUpload').click(uploadAndEstimatePose);
 $('#btnGenerateCarImage').click(generateCarImage);
 $('#btnVaeImageGenerate').click(uploadAndGenerateImage);
+$('#btnSRImageGenerate').click(uploadAndGenerateImage);
+$('#btnStyleTransfer').click(uploadAndStyleTransferImage);
+
+
