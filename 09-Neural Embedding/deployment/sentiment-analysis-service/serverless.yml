@@ -1,0 +1,32 @@
+service: sentiment-analysis-service
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+  environment:
+    S3_BUCKET: gauravp-eva-sentiment-analysis-models
+    TORCH_TEXT_FIELD: TEXT_fields.pkl
+    MODEL_PATH: sentiment_analysis_model.pt
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - s3:getObject
+      Resource: arn:aws:s3:::gauravp-eva-sentiment-analysis-models/*    
+
+
+
+functions:
+  predict:
+    handler: handler.predictSentiment
+    memorySize: 3008
+    timeout: 60
+    events:
+      - http:
+          path: predict
+          method: post
+          cors: true
+    layers:
+      - arn:aws:lambda:ap-south-1:503625344141:layer:gp-torchtext-spacy-pytorch-layer:1
