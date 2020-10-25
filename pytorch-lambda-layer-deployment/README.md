@@ -1,5 +1,3 @@
-## Lamda layer deployment of pytorch,torchvision and Pillow  
-
 # aws-lambda-deployment-with-serverless
 
 This repository contains example files on deploying pytorch based application to AWS Lambda using Serverless framework. For detailed explaination refer to this [blog](https://gaurav4664.medium.com/how-to-speed-up-aws-lambda-deployment-on-serverless-framework-by-leveraging-lambda-layers-623f7c742af4). 
