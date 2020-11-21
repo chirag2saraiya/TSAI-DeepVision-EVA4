@@ -337,6 +337,66 @@ function uploadAndStyleTransferImage(){
   .fail(function() {alert ("There was an error while sending request to face swap service."); });
 };
 
+function germanToEnglishTranslation(){
+
+  var germanText =  document.getElementById('inputText').value;
+  console.log(germanText);
+  
+  var textData = JSON.stringify({ "inText": germanText}); 
+  console.log(textData);
+
+
+$.ajax({
+      async: false,
+      crossDomain: true,
+      method: 'POST',
+      url: 'https://4zszglnlx2.execute-api.ap-south-1.amazonaws.com/dev/translate',
+      data: textData,
+      processData: false,
+      contentType: false,
+      mimeType: "application/json",
+})
+.done(function(response){
+  console.log(response);
+  document.getElementById('translationResult').textContent = response["output"];
+})
+.fail(function() {alert ("There was an error while sending request to Image Captioning Service."); });
+};
+
+
+
+function uploadAndGenerateCaption(){
+  var fileInput = document.getElementById('imageCaptionFileUpload').files;
+  if (!fileInput.length){
+    return alert('Please choose a file to upload first.');
+  }
+
+  var file = fileInput[0];
+  var filename = file.name
+
+  var formData = new FormData();
+  formData.append(filename, file);
+
+  console.log(filename);
+
+
+$.ajax({
+      async: false,
+      crossDomain: true,
+      method: 'POST',
+      url: 'https://1qtjnhjjti.execute-api.ap-south-1.amazonaws.com/dev/get_caption',
+      data: formData,
+      processData: false,
+      contentType: false,
+      mimeType: "multipart/form-data",
+})
+.done(function(response){
+  console.log(response);
+  document.getElementById('imageCaptionResult').textContent = response;
+})
+.fail(function() {alert ("There was an error while sending request to Image Captioning Service."); });
+};
+
 
 
 $('#btnFaceUpload').click(uploadAndAlignFace);
@@ -349,5 +409,7 @@ $('#btnGenerateCarImage').click(generateCarImage);
 $('#btnVaeImageGenerate').click(uploadAndGenerateImage);
 $('#btnSRImageGenerate').click(uploadAndGenerateImage);
 $('#btnStyleTransfer').click(uploadAndStyleTransferImage);
+$('#btnTranslate').click(germanToEnglishTranslation);
+$('#btnImgCaptionUpload').click(uploadAndGenerateCaption);
 
 
