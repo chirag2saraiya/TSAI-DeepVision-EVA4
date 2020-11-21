@@ -337,6 +337,33 @@ function uploadAndStyleTransferImage(){
   .fail(function() {alert ("There was an error while sending request to face swap service."); });
 };
 
+
+function movieReviewSentimentPrediction(){
+
+  var reviewText =  document.getElementById('reviewText').value;
+  console.log(reviewText);
+  
+  var textData = JSON.stringify({ "inReview": reviewText}); 
+  console.log(textData);
+
+
+$.ajax({
+      async: false,
+      crossDomain: true,
+      method: 'POST',
+      url: 'https://nld9y9mqhk.execute-api.ap-south-1.amazonaws.com/dev/predict',
+      data: textData,
+      processData: false,
+      contentType: false,
+      mimeType: "application/json",
+})
+.done(function(response){
+  console.log(response);
+  document.getElementById('sentimentResult').textContent = response["sentiment"];
+})
+.fail(function() {alert ("There was an error while sending request to sentiment prediction Service."); });
+};
+
 function germanToEnglishTranslation(){
 
   var germanText =  document.getElementById('inputText').value;
@@ -360,7 +387,7 @@ $.ajax({
   console.log(response);
   document.getElementById('translationResult').textContent = response["output"];
 })
-.fail(function() {alert ("There was an error while sending request to Image Captioning Service."); });
+.fail(function() {alert ("There was an error while sending request to Translation Service."); });
 };
 
 
@@ -409,6 +436,7 @@ $('#btnGenerateCarImage').click(generateCarImage);
 $('#btnVaeImageGenerate').click(uploadAndGenerateImage);
 $('#btnSRImageGenerate').click(uploadAndGenerateImage);
 $('#btnStyleTransfer').click(uploadAndStyleTransferImage);
+$('#btnSentiment').click(movieReviewSentimentPrediction);
 $('#btnTranslate').click(germanToEnglishTranslation);
 $('#btnImgCaptionUpload').click(uploadAndGenerateCaption);
 
