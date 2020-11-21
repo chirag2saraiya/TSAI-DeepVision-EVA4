@@ -1,0 +1,23 @@
+service: gp-image-captioning-service
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+
+functions:
+  image_caption:
+    handler: handler.getCaption
+    memorySize: 3008
+    timeout: 60
+    events:
+      - http:
+          path: get_caption
+          method: post
+          cors: true
+    layers:
+      - arn:aws:lambda:ap-south-1:503625344141:layer:gp-pytorch-torchvision-pillow-layer:1
+
+      
