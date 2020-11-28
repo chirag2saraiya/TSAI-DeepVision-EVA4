@@ -1,0 +1,19 @@
+service: gp-torchaudio-layer
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+
+layers:
+  gp-pytorch-torchaudio-layer:     # name of the layer
+    package:
+      artifact: torchLayerPackages.zip     # This will be deployed as layer
+    description: This layer contains pytorch 1.5.1, torchaudio 0.5.1, Pillow and its dependencies
+    compatibleRuntimes: 
+      - python3.8                         
+    licenseInfo: GPLv3 
+    allowedAccounts: 
+      - '*'                                # * specifies that anyone with layer ARN can use this layer

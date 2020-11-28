@@ -1,0 +1,24 @@
+service: gp-speech-to-text-service
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+
+functions:
+  speechToText:
+    handler: handler.speechToText
+    memorySize: 3008
+    timeout: 60
+    events:
+      - http:
+          path: speechToText
+          method: post
+          cors: true
+    layers:
+      - arn:aws:lambda:ap-south-1:503625344141:layer:gp-pytorch-torchaudio-layer:1
+
+
+      
