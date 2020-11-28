@@ -41,9 +41,9 @@ class SpeechRNN(torch.nn.Module):
 
 
 print('Loading Model')    
-model = torch.load('speechToTextModel.pth.tar',map_location=torch.device('cpu'))
-#model = SpeechRNN()
-#model.load_state_dict(torch.load('speechToTextModelWeights.pth',map_location=torch.device('cpu')))
+#model = torch.load('speechToTextModel.pth.tar',map_location=torch.device('cpu'))
+model = SpeechRNN()
+model.load_state_dict(torch.load('speechToTextModelWeights.pth.tar',map_location=torch.device('cpu')))
 model.eval()
 
 print('Model loaded')
@@ -78,7 +78,7 @@ def speechToText(event, context):
         body = base64.b64decode(event["body"])
         print('speechToText: Body loaded')
 
-        audio = decoder.MultipartDecoder(body, content_type_header).parts[0]
+        audio = decoder.MultipartDecoder(body, content_type_header).parts[0].content
         
         print('speechToText:Audio loaded')
 
