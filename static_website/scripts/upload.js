@@ -426,6 +426,39 @@ $.ajax({
 
 
 
+function uploadAndGenerateText(){
+  var fileInput = document.getElementById('speechToTextFileUpload').files;
+  if (!fileInput.length){
+    return alert('Please choose a file to upload first.');
+  }
+
+  var file = fileInput[0];
+  var filename = file.name
+
+  var formData = new FormData();
+  formData.append(filename, file);
+
+  console.log(filename);
+
+
+$.ajax({
+      async: false,
+      crossDomain: true,
+      method: 'POST',
+      url: 'https://32qex0yisi.execute-api.ap-south-1.amazonaws.com/dev/speechToText',
+      data: formData,
+      processData: false,
+      contentType: false,
+      mimeType: "multipart/form-data",
+})
+.done(function(response){
+  console.log(response);
+  document.getElementById('speechToTextResult').textContent = response;
+})
+.fail(function() {alert ("There was an error while sending request to speech to text Service."); });
+};
+
+
 $('#btnFaceUpload').click(uploadAndAlignFace);
 $('#btnFaceRecognitionUpload').click(uploadAndRecogniseFace);
 $('#btnResNetUpload').click(uploadAndClassifyImage);
@@ -439,5 +472,6 @@ $('#btnStyleTransfer').click(uploadAndStyleTransferImage);
 $('#btnSentiment').click(movieReviewSentimentPrediction);
 $('#btnTranslate').click(germanToEnglishTranslation);
 $('#btnImgCaptionUpload').click(uploadAndGenerateCaption);
+$('#btnSoundFileUpload').click(uploadAndGenerateText);
 
 
